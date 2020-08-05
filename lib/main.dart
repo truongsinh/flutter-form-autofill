@@ -88,6 +88,12 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               labelText: 'Contact Phone Number',
             ),
           ),
+          TextFormField(
+            decoration: const InputDecoration(
+              labelText: 'Delivery instruction',
+              hintText: 'how to find the address, delivery at frontdoor, etc',
+            ),
+          ),
         ],
       );
 }
