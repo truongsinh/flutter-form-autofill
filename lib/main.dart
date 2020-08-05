@@ -27,6 +27,9 @@ class MyStatefulWidget extends StatefulWidget {
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   var isSameAddress = true;
 
+  final billingAddress1Key = UniqueKey();
+  final billingAddress2Key = UniqueKey();
+
   // For the sake of simplicity, Form widget, _formkey, and textController
   // has been removed
 
@@ -68,6 +71,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 child: Column(
                   children: [
                     TextFormField(
+                      key: billingAddress1Key,
                       autofillHints: [AutofillHints.streetAddressLine1],
                       decoration: const InputDecoration(
                         labelText: 'Billing address 1',
@@ -75,6 +79,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       ),
                     ),
                     TextFormField(
+                      key: billingAddress2Key,
                       autofillHints: [AutofillHints.streetAddressLine2],
                       decoration: const InputDecoration(
                         labelText: 'Billing address 2',
