@@ -31,11 +31,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   // has been removed
 
   @override
-  Widget build(BuildContext context) => ListView(
-        padding: EdgeInsets.symmetric(horizontal: 16),
-        children: [
-          AutofillGroup(
-            child: Column(
+  Widget build(BuildContext context) => AutofillGroup(
+        child: ListView(
+          padding: EdgeInsets.symmetric(horizontal: 16),
+          children: [
+            Column(
               children: [
                 TextFormField(
                   autofillHints: [AutofillHints.streetAddressLine1],
@@ -53,68 +53,68 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 ),
               ],
             ),
-          ),
-          CheckboxListTile(
-            contentPadding: EdgeInsets.zero,
-            title: const Text("Billing address same as shipping address"),
-            value: isSameAddress,
-            onChanged: (bool newValue) {
-              setState(() {
-                isSameAddress = newValue;
-              });
-            },
-          ),
-          if (!isSameAddress)
+            CheckboxListTile(
+              contentPadding: EdgeInsets.zero,
+              title: const Text("Billing address same as shipping address"),
+              value: isSameAddress,
+              onChanged: (bool newValue) {
+                setState(() {
+                  isSameAddress = newValue;
+                });
+              },
+            ),
+            if (!isSameAddress)
+              AutofillGroup(
+                child: Column(
+                  children: [
+                    TextFormField(
+                      autofillHints: [AutofillHints.streetAddressLine1],
+                      decoration: const InputDecoration(
+                        labelText: 'Billing address 1',
+                        hintText: 'Number and street',
+                      ),
+                    ),
+                    TextFormField(
+                      autofillHints: [AutofillHints.streetAddressLine2],
+                      decoration: const InputDecoration(
+                        labelText: 'Billing address 2',
+                        hintText: '(optional) APT number, c/o',
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             AutofillGroup(
               child: Column(
                 children: [
                   TextFormField(
-                    autofillHints: [AutofillHints.streetAddressLine1],
+                    autofillHints: [AutofillHints.creditCardNumber],
                     decoration: const InputDecoration(
-                      labelText: 'Billing address 1',
-                      hintText: 'Number and street',
+                      labelText: 'Credit Card #',
                     ),
                   ),
                   TextFormField(
-                    autofillHints: [AutofillHints.streetAddressLine2],
+                    autofillHints: [AutofillHints.creditCardSecurityCode],
                     decoration: const InputDecoration(
-                      labelText: 'Billing address 2',
-                      hintText: '(optional) APT number, c/o',
+                      labelText: 'CCV',
                     ),
                   ),
                 ],
               ),
             ),
-          AutofillGroup(
-            child: Column(
-              children: [
-                TextFormField(
-                  autofillHints: [AutofillHints.creditCardNumber],
-                  decoration: const InputDecoration(
-                    labelText: 'Credit Card #',
-                  ),
-                ),
-                TextFormField(
-                  autofillHints: [AutofillHints.creditCardSecurityCode],
-                  decoration: const InputDecoration(
-                    labelText: 'CCV',
-                  ),
-                ),
-              ],
+            TextFormField(
+              autofillHints: [AutofillHints.telephoneNumber],
+              decoration: const InputDecoration(
+                labelText: 'Contact Phone Number',
+              ),
             ),
-          ),
-          TextFormField(
-            autofillHints: [AutofillHints.telephoneNumber],
-            decoration: const InputDecoration(
-              labelText: 'Contact Phone Number',
+            TextFormField(
+              decoration: const InputDecoration(
+                labelText: 'Delivery instruction',
+                hintText: 'how to find the address, delivery at frontdoor, etc',
+              ),
             ),
-          ),
-          TextFormField(
-            decoration: const InputDecoration(
-              labelText: 'Delivery instruction',
-              hintText: 'how to find the address, delivery at frontdoor, etc',
-            ),
-          ),
-        ],
+          ],
+        ),
       );
 }
