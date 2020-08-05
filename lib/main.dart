@@ -65,33 +65,46 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             },
           ),
           if (!isSameAddress)
-            Column(
+            AutofillGroup(
+              child: Column(
+                children: [
+                  TextFormField(
+                    autofillHints: [AutofillHints.streetAddressLine1],
+                    decoration: const InputDecoration(
+                      labelText: 'Billing address 1',
+                      hintText: 'Number and street',
+                    ),
+                  ),
+                  TextFormField(
+                    autofillHints: [AutofillHints.streetAddressLine2],
+                    decoration: const InputDecoration(
+                      labelText: 'Billing address 2',
+                      hintText: '(optional) APT number, c/o',
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          AutofillGroup(
+            child: Column(
               children: [
                 TextFormField(
+                  autofillHints: [AutofillHints.creditCardNumber],
                   decoration: const InputDecoration(
-                    labelText: 'Billing address 1',
-                    hintText: 'Number and street',
+                    labelText: 'Credit Card #',
                   ),
                 ),
                 TextFormField(
+                  autofillHints: [AutofillHints.creditCardSecurityCode],
                   decoration: const InputDecoration(
-                    labelText: 'Billing address 2',
-                    hintText: '(optional) APT number, c/o',
+                    labelText: 'CCV',
                   ),
                 ),
               ],
             ),
-          TextFormField(
-            decoration: const InputDecoration(
-              labelText: 'Credit Card #',
-            ),
           ),
           TextFormField(
-            decoration: const InputDecoration(
-              labelText: 'CCV',
-            ),
-          ),
-          TextFormField(
+            autofillHints: [AutofillHints.telephoneNumber],
             decoration: const InputDecoration(
               labelText: 'Contact Phone Number',
             ),
