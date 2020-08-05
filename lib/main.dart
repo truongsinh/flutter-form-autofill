@@ -35,12 +35,14 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         padding: EdgeInsets.symmetric(horizontal: 16),
         children: [
           TextFormField(
+            autofillHints: [AutofillHints.streetAddressLine1],
             decoration: const InputDecoration(
               labelText: 'Shipping address 1',
               hintText: 'Number and street',
             ),
           ),
           TextFormField(
+            autofillHints: [AutofillHints.streetAddressLine2],
             decoration: const InputDecoration(
               labelText: 'Shipping address 2',
               hintText: '(optional) APT number, c/o',
